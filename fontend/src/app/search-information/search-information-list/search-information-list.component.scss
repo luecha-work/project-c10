@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300&display=swap');
+$c10: #2399e5;
+$c10-gray: #e0e0e0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: black;
+    font-family: 'Bai Jamjuree', sans-serif;
+}
+
+.style-font {
+    color: black;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-size: 16px;
+}
+
+.style-button{
+    color: white;
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-size: 16px;
+}
+
+.style-button1 {
+    color: white;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-size: 16px;
+    height: 32px;
+}
+
+// :host ::ng-deep .p-inputNumber {
+//     width: 240px !important;
+//     height: 32px !important;
+// }

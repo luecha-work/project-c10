@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: black;
+    font-family: "Bai Jamjuree", sans-serif;
+}
+
+.spacer {
+    flex: 1;
+}
+
+img {
+    margin: 0px;
+    padding: 0px;
+    width: 50px;
+}
+
+.border-radius {
+    border-radius: 1px solid var(--surface-d);
+}
+
+.backgroundColor-icons {
+    font-size: 19px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    color: var(--blue-500);
+    background-color: var(--gray-200);
+}
+
+.style-font {
+    color: black;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-size: 16px;
+}
+
+.style-button {
+    color: white;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-size: 16px;
+    height: 32px;
+}
+
+// :host::ng-deep .p-chart-label {
+//     font-size: 20px !important;
+// }

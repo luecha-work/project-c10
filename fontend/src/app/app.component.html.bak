@@ -1,0 +1,213 @@
+<!-- <div class="spacer"></div> -->
+
+<div class="container-fluid shadow-3 py-2">
+    <div class="grid">
+        <div class="col-12 md-12 lg-12 d-flex align-items-center
+            justify-content-start" style="padding-bottom: 0px;">
+            <img src="assets/logo-rmutt.jpg" alt="logo-rmutt">
+            <h3 class="d-none d-md-inline-flex mb-0">
+                Correctly mask wearing detection system
+            </h3>
+
+            <div class="spacer"></div>
+
+            <button pButton pRipple type="button" icon="pi pi-bell" class="p-button-rounded mr-3" badge="8"
+                badgeClass="p-badge-danger" style="display: flexbox; float:
+                right; border: none; height: 30px; width: 30px;" (click)="bell.toggle($event)" [ngStyle]="{color:'var(--blue-500)'
+                ,backgroundColor:'var(--gray-200)'}">
+            </button>
+
+            <p-menu #bell class="style-font" [popup]="true" [model]="list_Warn" required appendTo="body"
+                visible="'false'"
+                [style]="{'width': 'auto','font-family':'BaiJamjuree, sans-serif','color':'black' ,'font-size': '16px'}">
+            </p-menu>
+
+            <p-button-icon pButton pRipple class="p-button-text border-radius mt-0 style-font" type="button"
+                label="{{admin_name}}" label="Log in" icon="pi pi-fw pi-angle-down" (click)="admin.toggle($event)"
+                style=" background-color: white; color: black; border: none ;border-radius: 0; border-left:'1px solid var(--surface-d)';"
+                iconPos="right">
+                <span class="backgroundColor-icons" style="margin-right: 10px;">
+                    <i class="pi pi-fw pi-user"></i> </span>
+            </p-button-icon>
+            <p-menu class="m-0 p-0" #admin [popup]="true" [model]="list_Users" required appendTo="body" [style]="{'font-family':'Bai Jamjuree,
+                sans-serif','color':'black', 'font-size': '16px'}">
+            </p-menu>
+        </div>
+    </div>
+</div>
+<div class="grid justify-content-between m-0">
+    <div class="col-2">
+        <p-menu [styleClass]="'py-4 shadow-1'" [model]="list_Menu" iconPos="right" [appendTo]="'body'"
+            [style]="{'font-family':'Bai Jamjuree, sans-serif','color':'black', 'width': '100%'}">
+        </p-menu>
+    </div>
+    <div class="col-10">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<!-- ------------------------------------------- เพิ่มสมาชิก ----------------------------------------------- -->
+<p-dialog header="" [(visible)]="isAddUser_Form" [modal]="true" [style]="{width: '25%','height':'auto'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false" [closable]="false">
+    <div class="mt-0 mb-5">
+        <h5 class="mb-4 p-2" style="text-align: center;"> เพิ่มสมาชิก </h5>
+        <div class="grid">
+            <div class="col">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input class="style-font" type="text" pInputText [(ngModel)]="add_Username" placeholder="Username"
+                        [style]="{'width': '100%', 'height': '38px'}">
+                </div>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
+                    <input class="style-font" type="password" pPassword [(ngModel)]="add_Password"
+                        placeholder="Password" [style]="{'width': '100%', 'height': '38px'}" />
+                </div>
+            </div>
+        </div>
+        <small class="style-font" id="username2-help" class="p-invalid"
+            style="color: red;">{{message_error_AddUser}}</small>
+        <div class="grid row mt-3">
+            <div class="col p-1">
+                <button pButton pRipple type="button" icon="pi pi-times"
+                    class="p-button-rounded p-button-danger style-button" (click)="onCancel_AddUser()" label="ยกเลิก"
+                    [style]="{'width': '100%', 'height':'38px'}">
+                </button>
+
+            </div>
+            <div class="col p-1">
+                <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded style-button"
+                    (click)="onCleck_AddUser()" label="ยืนยัน" [style]="{'width': '100%', 'height':'38px'}">
+                </button>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+
+<!-- ------------------------------------------ log in -------------------------------------------- -->
+<p-dialog header="" [(visible)]="isLogout_form" [modal]="true" [style]="{width: '25%','height':'auto'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false" [closable]="false">
+    <div class="mt-0 mb-5">
+        <h5 class="mb-5 p-2" style="text-align: center;"> เข้าสู่ระบบ </h5>
+        <div class="grid">
+            <div class="col">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input class="style-font" type="text" pInputText [(ngModel)]="login_Username" placeholder="Username"
+                        [style]="{'width': '100%', 'height': '38px'}">
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="col">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
+                    <input class="style-font" type="password" pPassword [(ngModel)]="login_Password"
+                        placeholder="Password" [style]="{'width': '100%', 'height': '38px'}" />
+                    <!-- <input type="text" pInputText placeholder="Password"> -->
+                </div>
+                <small class="style-font" id="username2-help" class="p-invalid"
+                    style="color: red;">{{message_error_Login}}</small>
+            </div>
+        </div>
+        <div class="d-flex p-field-checkbox">
+            <p-checkbox [(ngModel)]="remember_Me" [binary]="true" inputId="binary"></p-checkbox>
+            <label class="ml-1 style-font" for="binary">Remember me</label>
+        </div>
+
+        <div class="grid row mt-3">
+            <div class="col p-1">
+                <button pButton pRipple type="button" icon="pi pi-times"
+                    class="p-button-rounded p-button-danger style-button" (click)="onCancel_Login()" label="ยกเลิก"
+                    [style]="{'width': '100%', 'height':'38px'}">
+                </button>
+
+            </div>
+            <div class="col p-1">
+                <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded style-button"
+                    (click)="onClick_login()" label="ยืนยัน" [style]="{'width': '100%', 'height':'38px'}">
+                </button>
+            </div>
+        </div>
+
+    </div>
+</p-dialog>
+
+<!-- ------------------------------------------- เปลี่ยนรหัสผ่าน ----------------------------------------------- -->
+<p-dialog header="" [(visible)]="isChangPassWord_Form" [modal]="true" [style]="{width: '25%','height':'auto'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false" [closable]="false">
+    <div class="mt-0 mb-5">
+        <h5 class="mb-5 p-2" style="text-align: center;"> เปลี่ยนรหัสผ่าน </h5>
+        <div class="grid">
+            <div class="col">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
+                    <input class="style-font" type="password" pPassword [(ngModel)]="new_Password1"
+                        placeholder="Password" [style]="{'width': '100%', 'height': '38px'}" />
+                </div>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
+                    <input type="password" pPassword [(ngModel)]="new_Password2" placeholder="Confirm Password"
+                        [style]="{'width': '100%', 'height': '38px'}" />
+                </div>
+            </div>
+        </div>
+        <small id="username2-help" class="p-invalid" style="color: red;">{{message_error_Changpassword}}</small>
+
+        <div class="grid row mt-3">
+            <div class="col p-1">
+                <button pButton pRipple type="button" icon="pi pi-times"
+                    class="p-button-rounded p-button-danger style-button" (click)="onCancel_ChangPassword()"
+                    label="ยกเลิก" [style]="{'width': '100%', 'height':'38px'}">
+                </button>
+            </div>
+            <div class="col p-1">
+                <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded style-button"
+                    (click)="onClick_ChangPassword()" label="ยืนยัน" [style]="{'width': '100%', 'height':'38px'}">
+                </button>
+            </div>
+        </div>
+
+    </div>
+</p-dialog>
+
+<!-- ------------------------------------------- ตั้งค่าอุณหภูมิ ----------------------------------------------- -->
+<p-dialog header="" [(visible)]="isSetTemperature_form" [modal]="true" [style]="{width: '25%','height':'auto'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false" [closable]="false">
+    <div class="mt-0 mb-5">
+        <h5 class="mb-5 p-2" style="text-align: center;"> ตั้งค่าอุณหภูมิ </h5>
+        <div class="grid d-flex flex-column">
+            <div class="col">
+                <p style="text-align: center;">{{ start_Temperature }}</p>
+            </div>
+            <div class="col">
+                <p-slider [(ngModel)]="start_Temperature" [min]="0" [max]="100" [step]="0.5"
+                    [style]="{'width': '100%'}"></p-slider>
+            </div>
+        </div>
+
+        <div class="grid row mt-3">
+            <!-- <div class="col p-1">
+                <button pButton pRipple type="button" icon="pi pi-times"
+                    class="p-button-rounded p-button-danger style-font" (click)="onCancel_ChangPassword()"
+                    label="ยกเลิก" [style]="{'width' : '100%'}">
+                </button>
+            </div> -->
+            <div class="col p-1">
+                <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded style-button"
+                    (click)="onCleck_SetTemPeraTure()" label="ยืนยัน" [style]="{'width': '100%', 'height':'38px'}">
+                </button>
+            </div>
+        </div>
+
+    </div>
+</p-dialog>
